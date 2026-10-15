@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Management | CareNest</title>
+    <link rel="stylesheet" href="doctor-management.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Care<span>Nest</span></a>
+
+        <nav>
+            <a href="admin.html">Dashboard</a>
+            <a href="doctor-management.html" class="active">Doctors</a>
+            <a href="appointment-management.html">Appointments</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </header>
+
+    <main class="container">
+
+        <section class="page-heading">
+            <div>
+                <p class="small-heading">ADMINISTRATION</p>
+                <h1>Doctor Management 🩺</h1>
+                <p class="subtitle">
+                    Manage doctor profiles and keep your healthcare team organized.
+                </p>
+            </div>
+
+            <button class="primary-btn" id="addDoctorBtn">
+                + Add Doctor
+            </button>
+        </section>
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+                <div class="summary-icon blue">🩺</div>
+                <div>
+                    <p>Total Doctors</p>
+                    <h2 id="totalDoctors">0</h2>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon green">💚</div>
+                <div>
+                    <p>Available Doctors</p>
+                    <h2 id="availableDoctors">0</h2>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon purple">🏥</div>
+                <div>
+                    <p>Specializations</p>
+                    <h2 id="totalSpecializations">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="content-card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Our Doctors</h2>
+                    <p>View and manage registered doctors.</p>
+                </div>
+            </div>
+
+            <div class="search-row">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by doctor name or specialization..."
+                    aria-label="Search doctors"
+                >
+
+                <select id="availabilityFilter" aria-label="Filter by availability">
+                    <option value="All">All Doctors</option>
+                    <option value="Available">Available</option>
+                    <option value="Unavailable">Unavailable</option>
+                </select>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Doctor</th>
+                            <th>Specialization</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Availability</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="doctorTable"></tbody>
+                </table>
+            </div>
+
+            <p id="emptyMessage" class="empty-message">
+                No doctors added yet. Select "Add Doctor" to get started.
+            </p>
+
+        </section>
+
+        <div id="doctorModal" class="modal">
+
+            <div class="modal-content">
+
+                <div class="modal-heading">
+                    <div>
+                        <h2 id="modalTitle">Add New Doctor</h2>
+                        <p>Enter the doctor's professional details.</p>
+                    </div>
+
+                    <button type="button" id="closeModalBtn" class="close-btn"
+                        aria-label="Close form">&times;</button>
+                </div>
+
+                <form id="doctorForm">
+
+                    <input type="hidden" id="doctorId">
+
+                    <label for="doctorName">Full Name</label>
+                    <input type="text" id="doctorName"
+                        placeholder="e.g. Dr. Aditi Sharma" required>
+
+                    <label for="doctorSpecialization">Specialization</label>
+                    <select id="doctorSpecialization" required>
+                        <option value="">Select specialization</option>
+                        <option>General Physician</option>
+                        <option>Cardiologist</option>
+                        <option>Dermatologist</option>
+                        <option>Neurologist</option>
+                        <option>Pediatrician</option>
+                        <option>Orthopedic</option>
+                        <option>Gynecologist</option>
+                        <option>Dentist</option>
+                        <option>Ophthalmologist</option>
+                        <option>Psychiatrist</option>
+                        <option>Other</option>
+                    </select>
+
+                    <label for="doctorEmail">Email Address</label>
+                    <input type="email" id="doctorEmail"
+                        placeholder="doctor@example.com" required>
+
+                    <label for="doctorPhone">Phone Number</label>
+                    <input type="tel" id="doctorPhone"
+                        placeholder="10-digit phone number"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        inputmode="numeric"
+                        required>
+
+                    <label for="doctorAvailability">Availability</label>
+                    <select id="doctorAvailability" required>
+                        <option value="Available">Available</option>
+                        <option value="Unavailable">Unavailable</option>
+                    </select>
+
+                    <div class="form-actions">
+                        <button type="button" id="cancelBtn" class="cancel-btn">
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="primary-btn">
+                            Save Doctor
+                        </button>
+                    </div>
+
+                    <p id="formMessage" class="form-message" role="status"></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div id="deleteModal" class="modal">
+
+            <div class="modal-content delete-content">
+                <div class="delete-icon">🗑️</div>
+
+                <h2>Remove Doctor?</h2>
+
+                <p>
+                    Are you sure you want to remove this doctor from the list?
+                </p>
+
+                <div class="form-actions">
+                    <button type="button" id="cancelDeleteBtn" class="cancel-btn">
+                        Cancel
+                    </button>
+
+                    <button type="button" id="confirmDeleteBtn" class="delete-btn">
+                        Remove Doctor
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <p id="pageMessage" class="page-message" role="status"></p>
+
+    </main>
+
+    <footer>
+        <p>© 2026 CareNest Healthcare Management System</p>
+        <p>Compassion in every connection.</p>
+    </footer>
+
+    <script src="doctor-management.js"></script>
+
+</body>
+</html>

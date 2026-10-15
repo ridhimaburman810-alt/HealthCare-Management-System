@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Management | CareNest</title>
+    <link rel="stylesheet" href="medicine.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Care<span>Nest</span></a>
+
+        <nav>
+            <a href="admin.html">Dashboard</a>
+            <a href="doctor-management.html">Doctors</a>
+            <a href="appointment-management.html">Appointments</a>
+            <a href="medicine.html" class="active">Medicines</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome-section">
+            <p class="small-heading">PHARMACY MANAGEMENT</p>
+            <h1>Medicine Management 💊</h1>
+            <p>
+                Manage medicine inventory, monitor available stock,
+                track expiry dates, and calculate medicine charges.
+            </p>
+        </section>
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+                <div class="summary-icon blue">💊</div>
+                <p>Total Medicines</p>
+                <h2 id="totalMedicines">0</h2>
+                <span>Different medicine entries</span>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon green">📦</div>
+                <p>Total Units in Stock</p>
+                <h2 id="totalStock">0</h2>
+                <span>Available inventory units</span>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon orange">⚠️</div>
+                <p>Low Stock</p>
+                <h2 id="lowStockCount">0</h2>
+                <span>Medicines needing attention</span>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon purple">📅</div>
+                <p>Expired Medicines</p>
+                <h2 id="expiredCount">0</h2>
+                <span>Past their expiry date</span>
+            </div>
+
+        </section>
+
+        <section class="alert-section" id="alertSection">
+            <h3>⚠️ Inventory Alerts</h3>
+            <div id="alertList"></div>
+        </section>
+
+        <section class="content-card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Medicine Inventory</h2>
+                    <p>Add medicines and maintain existing inventory details.</p>
+                </div>
+
+                <button type="button" id="addMedicineBtn" class="primary-btn">
+                    + Add Medicine
+                </button>
+            </div>
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search medicine by name..."
+                    aria-label="Search medicines"
+                >
+
+                <select id="categoryFilter" aria-label="Filter by category">
+                    <option value="All">All Categories</option>
+                    <option value="Tablet">Tablet</option>
+                    <option value="Capsule">Capsule</option>
+                    <option value="Syrup">Syrup</option>
+                    <option value="Injection">Injection</option>
+                    <option value="Ointment">Ointment</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <select id="stockFilter" aria-label="Filter by stock">
+                    <option value="All">All Stock Levels</option>
+                    <option value="Low">Low Stock</option>
+                    <option value="Available">Available Stock</option>
+                    <option value="Expired">Expired</option>
+                </select>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Medicine ID</th>
+                            <th>Medicine Name</th>
+                            <th>Category</th>
+                            <th>Price / Unit</th>
+                            <th>Available Stock</th>
+                            <th>Expiry Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="medicineTable"></tbody>
+                </table>
+
+            </div>
+
+            <p id="emptyMessage" class="empty-message">
+                No medicines have been added yet.
+            </p>
+
+        </section>
+
+        <section class="content-card billing-card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Medicine Charges Calculator 🧾</h2>
+                    <p>
+                        Calculate the total medicine charge before adding
+                        it to a patient's bill.
+                    </p>
+                </div>
+            </div>
+
+            <form id="billingForm">
+
+                <div class="billing-grid">
+
+                    <div class="form-group">
+                        <label for="patientId">Patient ID</label>
+                        <input
+                            type="text"
+                            id="patientId"
+                            placeholder="Enter patient ID"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="billingMedicine">Select Medicine</label>
+                        <select id="billingMedicine" required>
+                            <option value="">Select medicine</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="medicineQuantity">Quantity</label>
+                        <input
+                            type="number"
+                            id="medicineQuantity"
+                            min="1"
+                            step="1"
+                            placeholder="Enter quantity"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <button type="submit" class="primary-btn">
+                    Calculate Charges
+                </button>
+
+            </form>
+
+            <div id="billingResult" class="billing-result" aria-live="polite">
+                <p>Select a medicine and quantity to calculate the charges.</p>
+            </div>
+
+            <p class="billing-note">
+                This calculator does not deduct stock or save charges to a
+                patient's bill. Those functions will be connected to the
+                database and billing module later.
+            </p>
+
+        </section>
+
+        <section class="notice-card">
+            <span>🔐</span>
+            <div>
+                <h3>Inventory and patient safety</h3>
+                <p>
+                    Check expiry dates before dispensing medicines.
+                    Expired medicines must not be dispensed, and inventory
+                    changes should be recorded by authorized staff.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 CareNest Healthcare Management System</p>
+        <p>Compassion in every connection.</p>
+    </footer>
+
+    <script src="medicine.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Dashboard | CareNest</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="patient-dashboard.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="patient-navbar">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">✚</span>
+            CareNest
+        </a>
+
+        <nav class="patient-nav-links">
+            <a href="patient-dashboard.html" class="active">Dashboard</a>
+            <a href="appointment.html">Appointments</a>
+            <a href="medical-records.html">Medical Records</a>
+        </nav>
+
+        <div class="patient-profile">
+            <div class="profile-avatar">P</div>
+
+            <div class="profile-info">
+                <strong id="patientName">Patient</strong>
+                <span>Patient Account</span>
+            </div>
+
+            <button id="logoutBtn" class="logout-btn">Log Out ↗</button>
+        </div>
+
+    </header>
+
+
+    <!-- Main Dashboard -->
+    <main class="dashboard-container">
+
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+
+            <div>
+                <span class="dashboard-eyebrow">YOUR PERSONAL HEALTH SPACE</span>
+
+                <h1>Hello, <span id="welcomeName">there</span>! ♡</h1>
+
+                <p>
+                    Here's your health overview. Take a breath
+                    and take care of yourself.
+                </p>
+            </div>
+
+            <a href="appointment.html" class="book-appointment-btn">
+                + Book an Appointment
+            </a>
+
+        </section>
+
+
+        <!-- Information Cards -->
+        <section class="summary-grid">
+
+            <article class="summary-card blue-card">
+                <div class="summary-top">
+                    <span>Upcoming Appointments</span>
+                    <span class="summary-icon">▦</span>
+                </div>
+
+                <h2 id="upcomingCount">0</h2>
+
+                <p>Your scheduled appointments</p>
+            </article>
+
+
+            <article class="summary-card green-card">
+                <div class="summary-top">
+                    <span>Medical Records</span>
+                    <span class="summary-icon">♡</span>
+                </div>
+
+                <h2 id="recordsCount">0</h2>
+
+                <p>Your available health records</p>
+            </article>
+
+
+            <article class="summary-card lavender-card">
+                <div class="summary-top">
+                    <span>Pending Appointments</span>
+                    <span class="summary-icon">◷</span>
+                </div>
+
+                <h2 id="pendingCount">0</h2>
+
+                <p>Appointments awaiting confirmation</p>
+            </article>
+
+        </section>
+
+
+        <!-- Appointments Section -->
+        <section class="dashboard-panel">
+
+            <div class="panel-heading">
+
+                <div>
+                    <span class="dashboard-eyebrow">YOUR SCHEDULE</span>
+                    <h2>Upcoming Appointments</h2>
+                </div>
+
+                <a href="appointment.html" class="view-all">
+                    Book New ↗
+                </a>
+
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Doctor</th>
+                            <th>Specialization</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="appointmentTable">
+
+                        <tr>
+                            <td colspan="5" class="empty-message">
+                                No appointments to display yet.
+                                Book an appointment to get started.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Medical Records Section -->
+        <section class="dashboard-panel records-panel">
+
+            <div class="panel-heading">
+
+                <div>
+                    <span class="dashboard-eyebrow">YOUR HEALTH HISTORY</span>
+                    <h2>Recent Medical Records</h2>
+                </div>
+
+                <a href="medical-records.html" class="view-all">
+                    View Records ↗
+                </a>
+
+            </div>
+
+            <div id="medicalRecordsList" class="records-list">
+
+                <div class="empty-records">
+                    <span class="empty-records-icon">♡</span>
+
+                    <div>
+                        <h3>Your health records will appear here.</h3>
+                        <p>
+                            Medical records added by authorized
+                            healthcare professionals will be displayed here.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Helpful Information -->
+        <section class="care-reminder">
+
+            <div class="reminder-icon">✿</div>
+
+            <div>
+                <h3>A little reminder to care for yourself.</h3>
+
+                <p>
+                    Keep your appointments updated and contact
+                    your healthcare provider whenever you need help.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="patient-footer">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">✚</span>
+            CareNest
+        </a>
+
+        <p>Thoughtful care. A healthier tomorrow.</p>
+
+    </footer>
+
+
+    <script src="patient-dashboard.js"></script>
+
+</body>
+
+</html>

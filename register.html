@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Registration | CareNest</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .register-page {
+            min-height: 100vh;
+            padding: 45px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #eff7ff, #f0faf5);
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 560px;
+            padding: 38px;
+            background: white;
+            border: 1px solid #e8eef2;
+            border-radius: 24px;
+            box-shadow: 0 15px 45px #263b4a0d;
+        }
+
+        .register-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .register-heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .register-heading h1 {
+            margin: 12px 0;
+            font-family: 'Manrope', sans-serif;
+            font-size: 30px;
+            color: #263b4a;
+        }
+
+        .register-heading p {
+            color: #718391;
+            font-size: 14px;
+        }
+
+        .register-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #263b4a;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 13px;
+            border: 1px solid #dfe8ee;
+            border-radius: 10px;
+            background: #fcfdff;
+            color: #263b4a;
+            font: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #65a9e8;
+            box-shadow: 0 0 0 3px #65a9e81a;
+        }
+
+        .register-submit {
+            grid-column: 1 / -1;
+            width: 100%;
+            margin-top: 5px;
+            padding: 14px;
+            border: none;
+            border-radius: 11px;
+            background: #2f6fa8;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .register-submit:hover {
+            background: #245982;
+        }
+
+        .register-footer {
+            margin-top: 23px;
+            text-align: center;
+            color: #718391;
+            font-size: 13px;
+        }
+
+        .register-footer a {
+            color: #2f6fa8;
+            font-weight: 700;
+        }
+
+        .register-message {
+            grid-column: 1 / -1;
+            display: none;
+            padding: 12px;
+            border-radius: 10px;
+            background: #e5f7ef;
+            color: #267253;
+            font-size: 13px;
+        }
+
+        @media (max-width: 520px) {
+            .register-container {
+                padding: 25px 20px;
+            }
+
+            .register-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width,
+            .register-submit,
+            .register-message {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="register-page">
+
+        <div class="register-container">
+
+            <div class="register-logo">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">✚</span>
+                    CareNest
+                </a>
+            </div>
+
+            <div class="register-heading">
+
+                <span class="eyebrow">YOUR HEALTH JOURNEY STARTS HERE</span>
+
+                <h1>Create your account</h1>
+
+                <p>Join CareNest for a simpler healthcare experience.</p>
+
+            </div>
+
+            <form class="register-form" id="registerForm">
+
+                <div class="form-group full-width">
+                    <label for="fullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="role">Register As</label>
+                    <select id="role" name="role" required>
+                        <option value="patient">Patient</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="admin">Admin</option>
+                        <option value="accountant">Accountant</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input
+                        type="date"
+                        id="dob"
+                        name="dob"
+                        autocomplete="bday"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter phone number"
+                        autocomplete="tel"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        title="Enter a 10-digit phone number"
+                        required
+                    >
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="address">Address</label>
+                    <textarea
+                        id="address"
+                        name="address"
+                        rows="2"
+                        placeholder="Enter your residential address"
+                        autocomplete="street-address"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="At least 8 characters"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Re-enter password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required
+                    >
+                </div>
+
+                <div class="register-message" id="registerMessage"
+                     role="status" aria-live="polite"></div>
+
+                <button type="submit" class="register-submit">
+                    Create Account ↗
+                </button>
+
+            </form>
+
+            <div class="register-footer">
+                Already have an account?
+                <a href="login.html">Log in</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="register.js"></script>
+
+</body>
+</html>

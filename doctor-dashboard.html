@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard | CareNest</title>
+    <link rel="stylesheet" href="doctor-dashboard.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Care<span>Nest</span></a>
+
+        <nav>
+            <a href="doctor-dashboard.html" class="active">Dashboard</a>
+            <a href="appointment-management.html">Appointments</a>
+            <a href="medical-records.html">Patient Records</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome-section">
+            <div>
+                <p class="small-heading">DOCTOR PORTAL</p>
+                <h1>Welcome, Dr. <span id="doctorName">Doctor</span> 👋</h1>
+                <p class="subtitle">
+                    Here's your daily overview. Take a moment to care for yourself too.
+                </p>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-icon">🩺</div>
+                <div>
+                    <h3>Dr. <span id="profileName">Doctor</span></h3>
+                    <p id="specialization">General Physician</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="summary-grid">
+
+            <div class="summary-card blue">
+                <div class="card-icon">📅</div>
+                <p>Today's Appointments</p>
+                <h2 id="todayCount">0</h2>
+                <span>Scheduled for today</span>
+            </div>
+
+            <div class="summary-card green">
+                <div class="card-icon">👥</div>
+                <p>Total Patients</p>
+                <h2 id="patientCount">0</h2>
+                <span>Patients in your records</span>
+            </div>
+
+            <div class="summary-card purple">
+                <div class="card-icon">⏳</div>
+                <p>Pending Appointments</p>
+                <h2 id="pendingCount">0</h2>
+                <span>Awaiting confirmation</span>
+            </div>
+
+        </section>
+
+        <section class="content-card">
+            <div class="section-heading">
+                <div>
+                    <h2>Today's Appointments</h2>
+                    <p>Review your scheduled patient visits.</p>
+                </div>
+
+                <a href="appointment-management.html" class="view-link">
+                    View All →
+                </a>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Time</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="appointmentTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-card">
+            <div class="section-heading">
+                <div>
+                    <h2>Patient Records</h2>
+                    <p>Quick access to your patients' medical records.</p>
+                </div>
+
+                <a href="medical-records.html" class="view-link">
+                    View Records →
+                </a>
+            </div>
+
+            <div class="records-box">
+                <div class="records-icon">📋</div>
+                <h3>Patient Medical Records</h3>
+                <p>
+                    View patient history and manage medical information
+                    from the Patient Records section.
+                </p>
+
+                <a href="medical-records.html" class="primary-btn">
+                    View Patient Records
+                </a>
+            </div>
+        </section>
+
+        <section class="reminder">
+            <span>💙</span>
+            <div>
+                <h3>A little reminder</h3>
+                <p>
+                    Every patient has a story. Thank you for being part of their healing journey.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 CareNest Healthcare Management System</p>
+        <p>Compassion in every connection.</p>
+    </footer>
+
+    <script src="doctor-dashboard.js"></script>
+
+</body>
+</html>

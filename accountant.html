@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareNest | Accountant Dashboard</title>
+    <link rel="stylesheet" href="accountant.css">
+</head>
+<body>
+
+    <header>
+        <h2>CareNest</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="admin.html">Admin</a>
+            <a href="medicine.html">Medicines</a>
+            <a href="login.html" id="logoutBtn">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <h1>Accountant Dashboard</h1>
+            <p>Manage patient bills, hospital expenses and payments.</p>
+        </section>
+
+        <section class="summary">
+            <div class="card">
+                <h3>Total Bills</h3>
+                <p id="totalBills">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Revenue</h3>
+                <p id="totalRevenue">₹0.00</p>
+            </div>
+
+            <div class="card">
+                <h3>Amount Received</h3>
+                <p id="amountReceived">₹0.00</p>
+            </div>
+
+            <div class="card">
+                <h3>Pending Balance</h3>
+                <p id="pendingBalance">₹0.00</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Generate Patient Bill</h2>
+
+            <form id="billForm">
+                <div class="form-grid">
+                    <div>
+                        <label>Patient ID</label>
+                        <input type="text" id="patientId"
+                               placeholder="Enter patient ID" required>
+                    </div>
+
+                    <div>
+                        <label>Patient Name</label>
+                        <input type="text" id="patientName"
+                               placeholder="Enter patient name" required>
+                    </div>
+
+                    <div>
+                        <label>Consultation Fees (₹)</label>
+                        <input type="number" id="consultation"
+                               min="0" step="0.01" value="0" required>
+                    </div>
+
+                    <div>
+                        <label>Operation / Surgery Charges (₹)</label>
+                        <input type="number" id="operation"
+                               min="0" step="0.01" value="0" required>
+                    </div>
+
+                    <div>
+                        <label>Medicine Charges (₹)</label>
+                        <input type="number" id="medicine"
+                               min="0" step="0.01" value="0" required>
+                    </div>
+
+                    <div>
+                        <label>Other Hospital Expenses (₹)</label>
+                        <input type="number" id="otherExpenses"
+                               min="0" step="0.01" value="0" required>
+                    </div>
+                </div>
+
+                <button type="button" id="calculateBtn">
+                    Calculate Total
+                </button>
+
+                <div class="total-box">
+                    <span>Total Bill Amount</span>
+                    <strong id="billTotal">₹0.00</strong>
+                </div>
+
+                <button type="submit">Generate Bill</button>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Record Payment</h2>
+
+            <form id="paymentForm">
+                <div class="form-grid">
+                    <div>
+                        <label>Select Bill</label>
+                        <select id="paymentBill" required>
+                            <option value="">Select a bill</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Payment Amount (₹)</label>
+                        <input type="number" id="paymentAmount"
+                               min="0.01" step="0.01" required>
+                    </div>
+
+                    <div>
+                        <label>Payment Method</label>
+                        <select id="paymentMethod" required>
+                            <option value="">Select method</option>
+                            <option value="Cash">Cash</option>
+                            <option value="UPI">UPI</option>
+                            <option value="Card">Card</option>
+                            <option value="Bank Transfer">Bank Transfer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit">Record Payment</button>
+            </form>
+        </section>
+
+        <section class="panel">
+            <h2>Patient Bills</h2>
+
+            <input type="text" id="searchBill"
+                   placeholder="Search by patient ID or name">
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bill ID</th>
+                            <th>Patient ID</th>
+                            <th>Patient Name</th>
+                            <th>Consultation</th>
+                            <th>Operation</th>
+                            <th>Medicine</th>
+                            <th>Other</th>
+                            <th>Total</th>
+                            <th>Paid</th>
+                            <th>Pending</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="billTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Payment History</h2>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Bill ID</th>
+                            <th>Patient Name</th>
+                            <th>Amount</th>
+                            <th>Method</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="paymentTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 CareNest Healthcare Management System</p>
+    </footer>
+
+    <script src="accountant.js"></script>
+</body>
+</html>

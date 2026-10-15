@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Management | CareNest</title>
+    <link rel="stylesheet" href="appointment-management.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Care<span>Nest</span></a>
+
+        <nav>
+            <a href="admin.html">Dashboard</a>
+            <a href="appointment.html">Book Appointment</a>
+            <a href="appointment-management.html" class="active">Appointments</a>
+            <a href="medical-records.html">Medical Records</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome-section">
+            <p class="small-heading">APPOINTMENT CONTROL CENTER</p>
+            <h1>Appointment Management 📅</h1>
+            <p>
+                Keep appointments organized and help every patient receive
+                timely healthcare.
+            </p>
+        </section>
+
+        <section class="summary-grid">
+
+            <div class="summary-card blue">
+                <div class="summary-icon">📋</div>
+                <p>Total Appointments</p>
+                <h2 id="totalCount">0</h2>
+            </div>
+
+            <div class="summary-card orange">
+                <div class="summary-icon">⏳</div>
+                <p>Pending</p>
+                <h2 id="pendingCount">0</h2>
+            </div>
+
+            <div class="summary-card green">
+                <div class="summary-icon">✓</div>
+                <p>Confirmed</p>
+                <h2 id="confirmedCount">0</h2>
+            </div>
+
+            <div class="summary-card purple">
+                <div class="summary-icon">💚</div>
+                <p>Completed</p>
+                <h2 id="completedCount">0</h2>
+            </div>
+
+        </section>
+
+        <section class="content-card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>All Appointments</h2>
+                    <p>Review and manage patient appointment requests.</p>
+                </div>
+            </div>
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search patient or doctor..."
+                    aria-label="Search appointments"
+                >
+
+                <select id="statusFilter" aria-label="Filter by status">
+                    <option value="All">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+
+                <input
+                    type="date"
+                    id="dateFilter"
+                    aria-label="Filter by appointment date"
+                >
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Specialization</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="appointmentTable"></tbody>
+                </table>
+
+            </div>
+
+            <p id="emptyMessage" class="empty-message">
+                No appointments available yet.
+            </p>
+
+        </section>
+
+        <section class="notice-card">
+            <span>💙</span>
+            <div>
+                <h3>Patient care comes first</h3>
+                <p>
+                    Confirm appointments only after checking the doctor's
+                    schedule. Handle cancellations and patient information
+                    carefully.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 CareNest Healthcare Management System</p>
+        <p>Compassion in every connection.</p>
+    </footer>
+
+    <script src="appointment-management.js"></script>
+
+</body>
+</html>

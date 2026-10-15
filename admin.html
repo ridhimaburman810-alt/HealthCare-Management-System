@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | CareNest</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Care<span>Nest</span></a>
+
+        <nav>
+            <a href="admin.html" class="active">Dashboard</a>
+            <a href="doctor-management.html">Doctors</a>
+            <a href="appointment-management.html">Appointments</a>
+            <a href="medical-records.html">Medical Records</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome-section">
+            <p class="small-heading">ADMINISTRATION PANEL</p>
+            <h1>Welcome, Administrator! 💙</h1>
+            <p>
+                Manage hospital users, doctors, and appointments
+                from one organized dashboard.
+            </p>
+        </section>
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+                <div class="summary-icon blue">👥</div>
+                <p>Total Patients</p>
+                <h2 id="patientCount">0</h2>
+                <span>Registered patients</span>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon green">🩺</div>
+                <p>Total Doctors</p>
+                <h2 id="doctorCount">0</h2>
+                <span>Hospital doctors</span>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon purple">💼</div>
+                <p>Accountants</p>
+                <h2 id="accountantCount">0</h2>
+                <span>Billing staff</span>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-icon orange">📅</div>
+                <p>Appointments</p>
+                <h2 id="appointmentCount">0</h2>
+                <span>Total appointment records</span>
+            </div>
+
+        </section>
+
+        <section class="quick-actions">
+
+            <a href="doctor-management.html" class="action-card">
+                <div class="action-icon">🩺</div>
+                <div>
+                    <h3>Doctor Management</h3>
+                    <p>Add, update, and manage doctors.</p>
+                </div>
+                <span>→</span>
+            </a>
+
+            <a href="appointment-management.html" class="action-card">
+                <div class="action-icon">📅</div>
+                <div>
+                    <h3>Appointment Management</h3>
+                    <p>Review and manage appointment requests.</p>
+                </div>
+                <span>→</span>
+            </a>
+
+            <a href="appointment.html" class="action-card">
+                <div class="action-icon">➕</div>
+                <div>
+                    <h3>Book an Appointment</h3>
+                    <p>Open the appointment booking page.</p>
+                </div>
+                <span>→</span>
+            </a>
+
+        </section>
+
+        <section class="content-card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>User Management</h2>
+                    <p>View and manage registered hospital users.</p>
+                </div>
+
+                <button type="button" id="addUserBtn" class="primary-btn">
+                    + Add User
+                </button>
+            </div>
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by name or email..."
+                    aria-label="Search users"
+                >
+
+                <select id="roleFilter" aria-label="Filter users by role">
+                    <option value="All">All Roles</option>
+                    <option value="Patient">Patient</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Accountant">Accountant</option>
+                    <option value="Admin">Admin</option>
+                </select>
+
+                <select id="statusFilter" aria-label="Filter users by status">
+                    <option value="All">All Statuses</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="userTable"></tbody>
+                </table>
+
+            </div>
+
+            <p id="emptyMessage" class="empty-message">
+                No users are available yet.
+            </p>
+
+        </section>
+
+        <section class="notice-card">
+            <span>🔐</span>
+
+            <div>
+                <h3>Administrator Responsibilities</h3>
+                <p>
+                    Manage accounts responsibly and protect patient privacy.
+                    Only authorized administrators should access user management
+                    functions and sensitive hospital information.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 CareNest Healthcare Management System</p>
+        <p>Compassion in every connection.</p>
+    </footer>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>
