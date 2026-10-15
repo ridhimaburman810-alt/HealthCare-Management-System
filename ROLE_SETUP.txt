@@ -1,0 +1,16 @@
+CARENEST — ROLE SELECTION (COLLEGE DEMO)
+
+1. In START_CARENEST.bat configure your MySQL database password and save.
+2. Start the MySQL service.
+3. Run START_CARENEST.bat (no Maven or Tomcat).
+4. Open http://localhost:8080/register.html.
+5. Select Patient, Doctor, Admin, or Accountant and register. No staff code is needed.
+6. Signup logs you in and opens the corresponding dashboard.
+7. Existing registered users log in with their original role.
+
+Existing MySQL data is preserved. The Java server will add the role column automatically
+if this database was created with the earlier version.
+
+DEMO-ONLY WARNING: Anybody can register as Doctor or Admin in this version.
+Do NOT use it for real hospitals or real private patient information. Staff dashboards
+are primarily frontend demonstrations, not full database-backed staff modules.

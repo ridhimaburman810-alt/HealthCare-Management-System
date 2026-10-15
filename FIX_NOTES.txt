@@ -1,0 +1,23 @@
+CARENEST FIX — 15 October 2026
+
+Fixed the confirmed server routing bug in Server.java.
+The old code used substring(4) for paths beginning with /api/.
+That produced '/register' rather than 'register', causing signup and login requests to fall into the session-required handler and display 'Please log in first.'
+The corrected code uses substring(5).
+
+TESTS PERFORMED:
+- javac -encoding UTF-8 Server.java (passed)
+- Route extraction test for register/login/logout/me/appointments (passed)
+- POST /api/register with invalid fields returned HTTP 400 validation error, not 401 (passed)
+- GET /api/me without login returned HTTP 401 as expected (passed)
+
+Real MySQL signup/login was NOT tested in this environment.
+
+TO RUN ON WINDOWS:
+1. The original MySQL schema already exists on your laptop; do not recreate it.
+2. Edit START_CARENEST.bat and enter your MySQL password in the CARENEST_DB_PASSWORD setting.
+3. Open the CareNest_No_Maven folder in VS Code and run .\START_CARENEST.bat in PowerShell.
+4. Keep the terminal running and browse to http://localhost:8080/register.html (do not use Live Server).
+5. Try registering using a NEW email address and a DOB for an adult aged 18 or older.
+
+If an earlier broken attempt somehow created your account, log in instead or use a different test email.
